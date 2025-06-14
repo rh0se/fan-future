@@ -35,6 +35,7 @@ npm run build
 
 This generates a `dist` folder for deployment.
 
+
 ---
 
 ## 2. Cloud Server Setup
@@ -49,18 +50,12 @@ This generates a `dist` folder for deployment.
 
 ### File Transfer
 
-* **Option 1:** Used **Termius GUI** drag-and-drop feature to upload files to the server
-* **Option 2:** Used `scp` command for secure file transfer:
+* Used `scp` command for secure file transfer on my local terminal:
 
 ```bash
-scp -r dist/* ubuntu@<your_server_ip>:/tmp
+scp -i ~/Downloads/first-project.pem -r  ./dist ubuntu@<ipaddress>:/home/ubuntu/
 ```
 
-Then moved the files into Nginx’s serving directory:
-
-```bash
-sudo cp -r /tmp/* /var/www/html/
-```
 
 ---
 
@@ -82,11 +77,14 @@ sudo systemctl enable nginx
 
 ### Serve React App with Nginx
 
-After uploading `dist` folder:
+Then moved the files into Nginx’s serving directory:
 
 ```bash
-sudo cp -r dist/* /var/www/html/
+sudo mv dist /var/www/html/
+sudo mv /var/www/html/dist/* /var/www/html/
+sudo rm -r /var/www/html/dist
 ```
+
 
 Edit default Nginx config:
 
@@ -147,12 +145,7 @@ Requested certificate:
 sudo certbot --nginx -d fanfuture.mooo.com
 ```
 
-Certbot configured Nginx and installed certificates in:
 
-* `/etc/letsencrypt/live/fanfuture.mooo.com/fullchain.pem`
-* `/etc/letsencrypt/live/fanfuture.mooo.com/privkey.pem`
-
-Certbot also enabled auto-renewal.
 
 Test HTTPS:
 
@@ -165,20 +158,19 @@ https://fanfuture.mooo.com
 ## 6. Final Result
 
 The live site is now hosted at:
+[Fanfuture](https://fanfuture.mooo.com)
 
 ```
 https://fanfuture.mooo.com
 ```
 
----
+![rendered page desktop](./screenshot-desktop.png)
 
-## Optional Improvements
+![rendered page mobile](./screenshot-mobile.png)
 
-* Automate deployment using CI/CD tools (e.g. GitHub Actions)
-* Use a custom domain and DNS provider
-* Add backend for form handling and dynamic data
 
 ---
+
 
 ## Author
 
