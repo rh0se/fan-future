@@ -86,20 +86,10 @@ sudo rm -r /var/www/html/dist
 ```
 
 
-Edit default Nginx config:
+Check and Edit default Nginx config:
 
 ```bash
 sudo nano /etc/nginx/sites-available/default
-```
-
-Ensure the `location /` block looks like this:
-
-```nginx
-location / {
-    root /var/www/html;
-    index index.html;
-    try_files $uri $uri/ /index.html;
-}
 ```
 
 Check config and reload:
@@ -144,8 +134,45 @@ Requested certificate:
 ```bash
 sudo certbot --nginx -d fanfuture.mooo.com
 ```
+Check and Edit default Nginx config:
 
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
+The block looks like this:
 
+```nginx
+# HTTP Server Block
+server {
+    listen 80;
+    listen [::]:80;
+    server_name fanfuture.mooo.com;
+
+    # Redirect all HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+# HTTPS Server Block
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name fanfuture.mooo.com;
+
+    root /var/www/html;
+    index index.html;
+
+    # SSL certificates from Let's Encrypt
+    ssl_certificate /etc/letsencrypt/live/fanfuture.mooo.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fanfuture.mooo.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+}
+```
 
 Test HTTPS:
 
