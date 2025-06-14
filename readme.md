@@ -48,9 +48,16 @@ This generates a `dist` folder for deployment.
 
 * Connected via **Termius Desktop** using private key authentication
 
+```bash
+ cd downloads
+ chmod 400 first-project.pem
+ ssh -i first-project.pem ubuntu@ipAddress
+ ```
+
 ### File Transfer
 
 * Used `scp` command for secure file transfer on my local terminal:
+
 
 ```bash
 scp -i ~/Downloads/first-project.pem -r  ./dist ubuntu@<ipaddress>:/home/ubuntu/
