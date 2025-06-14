@@ -1,4 +1,4 @@
-# Digital Fan Engagement Web Deployment
+# AltSchool of Engineering Tinyuka Second Semester Project Submission (Cloud) (Digital Fan Engagement Web Deployment)
 
 This project demonstrates how to deploy a dynamic React website on a cloud server using Nginx. The website, built with Vite, Tailwind CSS, and EmailJS, showcases a prototype titled **"The Future of Digital Fan Engagement in Sports."**
 
