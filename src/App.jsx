@@ -18,8 +18,8 @@ const App = () => {
     <div className="font-sans">
       <Header onContactClick={openModal} />
       <Hero />
-      <Features />
       <About />
+      <Features />
       <Bio />
       <Footer onContactClick={openModal} />
 

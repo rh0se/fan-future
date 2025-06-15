@@ -37,6 +37,13 @@ const Features = () => {
           ))}
         </div>
       </div>
+      {/* Vision Statement */}
+      <div className="mt-10 bg-gradient-to-r from-green-100 to-emerald-50 p-6 rounded-2xl shadow-md">
+        <p className="text-xl font-semibold text-center italic text-green-900">
+          “FanFuture is not just an app, it's the future of club-fan
+          connectivity across Africa’s growing sports industry.”
+        </p>
+      </div>
     </section>
   );
 };

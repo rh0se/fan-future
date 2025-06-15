@@ -4,9 +4,11 @@ import toast, { Toaster } from "react-hot-toast";
 
 const NewsletterForm = () => {
   const [email, setEmail] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDisabled(true);
     const templateParams = { email: email };
 
     emailjs
@@ -19,9 +21,11 @@ const NewsletterForm = () => {
       .then(() => {
         toast.success("Thank you for subscribing!");
         setEmail("");
+        setDisabled(false);
       })
       .catch(() => {
         toast.error("Subscription failed. Try again.");
+        setDisabled(false);
       });
   };
 
@@ -37,6 +41,7 @@ const NewsletterForm = () => {
       />
       <button
         type="submit"
+        disabled={disabled}
         className="bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-800 transition"
       >
         Subscribe

@@ -1,45 +1,80 @@
 import React from "react";
-import { FaUserTie, FaTools, FaLightbulb } from "react-icons/fa";
+import {
+  FaLaptopCode,
+  FaProjectDiagram,
+  FaGraduationCap,
+} from "react-icons/fa";
 
-const bioCards = [
+const bioSections = [
   {
-    icon: <FaUserTie className="text-green-700 text-3xl" />,
-    title: "Cloud Engineering Enthusiast",
-    description:
-      "Focused on secure, scalable infrastructure and real-time systems innovation.",
+    icon: <FaLaptopCode className="text-emerald-700 text-4xl" />,
+    title: "Skills",
+    content: (
+      <ul className="list-disc list-inside text-sm text-gray-700">
+        <li>AWS, Linux, Docker, CI/CD</li>
+        <li>Bash scripting, Git, Python</li>
+        <li>React, Tailwind CSS, REST APIs</li>
+      </ul>
+    ),
   },
   {
-    icon: <FaTools className="text-green-700 text-3xl" />,
-    title: "Technical Stack",
-    description:
-      "Hands-on experience with AWS, Docker, CI/CD pipelines, and deployment automation.",
+    icon: <FaProjectDiagram className="text-emerald-700 text-4xl" />,
+    title: "Past Projects",
+    content: (
+      <ul className="list-disc list-inside text-sm text-gray-700">
+        <li>Inventory App with real-time updates (React + API)</li>
+        <li>Cloud provisioning with NGINX and SSL (AWS EC2)</li>
+      </ul>
+    ),
   },
   {
-    icon: <FaLightbulb className="text-green-700 text-3xl" />,
-    title: "Creative Problem Solver",
-    description:
-      "Combining technical expertise with a drive to innovate across sports tech and beyond.",
+    icon: <FaGraduationCap className="text-emerald-700 text-4xl" />,
+    title: "Education",
+    content: (
+      <div className="text-sm text-gray-700 space-y-1">
+        <p>
+          <strong>B.Eng – Marine Engineering</strong>
+          <br />
+          Federal University of Petroleum Resources
+        </p>
+        <p>AltSchool Africa (Cloud Track)</p>
+      </div>
+    ),
   },
 ];
 
 const Bio = () => {
   return (
-    <section id="bio" className="px-6 py-16 bg-white border-t border-green-100">
-      <div className="max-w-4xl mx-auto space-y-10">
-        <h2 className="text-3xl font-bold text-center text-green-800">
-          Professional Bio
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {bioCards.map((card, index) => (
+    <section
+      id="bio"
+      className="relative z-10 px-6 py-20 bg-gradient-to-br from-white via-emerald-50 to-emerald-100"
+    >
+      {/* Abstract blurred background elements */}
+      <div className="absolute top-0 left-0 w-52 h-52 bg-emerald-200 rounded-full opacity-20 blur-3xl z-0"></div>
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-emerald-300 rounded-full opacity-20 blur-3xl z-0"></div>
+
+      <div className="relative z-10 max-w-6xl mx-auto space-y-14">
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-emerald-800">
+            Professional Bio
+          </h2>
+          <p className="text-gray-600 mt-2 max-w-xl mx-auto">
+            A snapshot of my skills, academic background, and recent project
+            work.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {bioSections.map((section, index) => (
             <div
               key={index}
-              className="bg-green-50 p-6 rounded-2xl shadow-md flex flex-col items-center text-center space-y-3"
+              className="bg-white border border-emerald-100 shadow-md p-6 rounded-2xl text-center hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col items-center space-y-4"
             >
-              {card.icon}
-              <h3 className="text-lg font-semibold text-green-800">
-                {card.title}
+              {section.icon}
+              <h3 className="text-xl font-semibold text-emerald-800">
+                {section.title}
               </h3>
-              <p className="text-sm text-gray-700">{card.description}</p>
+              <div className="text-left">{section.content}</div>
             </div>
           ))}
         </div>

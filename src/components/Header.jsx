@@ -28,11 +28,11 @@ const Header = ({ onContactClick }) => {
           </svg>
         </button>
         <nav className="hidden md:flex space-x-6 text-sm font-semibold">
-          <a href="#features" className="text-green-700 hover:underline">
-            Features
-          </a>
           <a href="#about" className="text-green-700 hover:underline">
             About
+          </a>
+          <a href="#features" className="text-green-700 hover:underline">
+            Features
           </a>
           <a href="#bio" className="text-green-700 hover:underline">
             Bio
@@ -48,16 +48,16 @@ const Header = ({ onContactClick }) => {
       {menuOpen && (
         <div className="md:hidden px-6 pb-4">
           <a
-            href="#features"
-            className="block py-2 hover:underline text-green-700"
-          >
-            Features
-          </a>
-          <a
             href="#about"
             className="block py-2 hover:underline text-green-700"
           >
             About
+          </a>
+          <a
+            href="#features"
+            className="block py-2 hover:underline text-green-700"
+          >
+            Features
           </a>
           <a href="#bio" className="block py-2 hover:underline text-green-700">
             Bio

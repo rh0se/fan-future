@@ -53,7 +53,7 @@ const Footer = ({ onContactClick }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaGithub />
+                <FaGithub className="hover:text-green-300" />
               </a>
               <a
                 href="https://twitter.com/"
